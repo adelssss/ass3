@@ -1,27 +1,22 @@
-const cors = require('cors');
-const express = require('express');
-const MongoClient = require('mongodb').MongoClient;
-const blogRoutes = require('./routes/blogs');
-const blogModel = require('./models/blog');
+import express from "express";
+import mongoose from "mongoose";
+import bodyParser from "body-parser";
+import dotenv from "dotenv";
+import route from "./routes/blogRoute.js";
 
 const app = express();
-app.use(cors()); 
-app.use(express.json()); 
-require('dotenv').config();
 
-const mongoUri = process.env.MONGO_URI;
-const PORT = process.env.PORT || 3000;
+app.use(bodyParser.json());
+dotenv.config();
+const PORT=process.env.PORT ||3000;
+const MONGOURL=process.env.MONGO_URL;
 
-MongoClient.connect(mongoUri)
-  .then((client) => {
-    const db = client.db('blogdb');
-    blogModel.initializeDatabase(db);
-    console.log('Connected to MongoDB');
-
-    app.use('/', blogRoutes);
-
-    app.listen(PORT, () => {
-      console.log(`Server is running on http://localhost:${PORT}`);
-    });
+mongoose.connect(MONGOURL).then(()=>{
+  console.log("Database connected successful.")
+  app.listen(PORT, ()=>{
+    console.log('Server is running on port ${PORT}')
   })
-  .catch((err) => console.error('Failed to connect to MongoDB', err));
+})
+.catch((error) => console.log(error));
+
+app.use("/api/blog", route);
