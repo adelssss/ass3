@@ -29,23 +29,23 @@ This is a CRUD API for managing blog posts. The API allows users to create, read
 -npm i mongoose
 -npm i body-parser
 -npm install --save-dev nodemon
-3.Install  MongoDB database
-4.Connect MongoDB database with Express.js:
+3. Install  MongoDB database
+4. Connect MongoDB database with Express.js:
 -Create a dotenv file in the root directory
 -Create a server.js
 -Run app using npm start
-5.Create folder structure
+5. Create folder structure
 -Create blogModel.js file inside model folder
 -Create blogController.js file inside controller folder
 -Create blogRoute.js file inside route folder
-6.Install Postman:
+6. Install Postman:
 -sign in
-7.POST data into MongoDB
-8.GET all blogs data from MongoDB
-9.Get a single blog data from MongoDB
-10.UPDATE data from MongoDB
-11.DELETE data from MongoDB
-12.API will be available at :
+7. POST data into MongoDB
+8. GET all blogs data from MongoDB
+9. Get a single blog data from MongoDB
+10. UPDATE data from MongoDB
+11. DELETE data from MongoDB
+12. API will be available at :
 http://localhost:3000/api/blog
 ## API Endpoints
 -Create a blog post
